@@ -1,6 +1,7 @@
 import sys
 import os
 from flask import Flask
+from sqlalchemy import SQLAlchemy
 
 
 # Ensure the settings module is in the Python path
@@ -20,6 +21,11 @@ app.config.from_object('flask_blog.settings')
 # from .views import some_view_function
 
 
+db = SQLAlchemy(app)
+
+
 # Import views to register routes
-from flask_blog.home import views  
+from flask_blog.blog import views  
 # Adjust the import if the structure is different
+
+from flask_blog.author import views
