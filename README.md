@@ -1,8 +1,8 @@
 # flask_blog
 
-##3.03 - Creating SQLAlchemy Database
+##Creating SQLAlchemy Database
 
-### Rename / move 'home' directory to 'blog'
+Rename / move 'home' directory to 'blog'
 
 On terminal:
 
@@ -38,16 +38,181 @@ Add placehoder things to ```views.py```
 Add ```init.py``` files to ```author``` and ```blog```
 
 
+##Defining a Class for Models
 
-
-##3.04 - Defining a Class for Models
-
-### Define a class in ```models.py``` that defines the author object
-
+Define a class in ```models.py``` that defines the author object
 
 
 
+##Discussing the ORM Interactions
+
+Create ```Author``` class in ```author/models.py``` file.
+
+Go to upper directory :
+``` cd .. ``
+
+Open python shell:
+
+CLI:
+```python```
+
+Python shell:
+```
+>>> from flask_blog import app, db
+>>> from flask_blog.author.models import *
+>>> with app.app_context():
+...     db.create_all()
+
+```
+
+Check database with another terminal window:
+```mysql -h flask-db.c9a06k6cqktv.ap-southeast-1.rds.amazonaws.com -P 3306 -u admin -p```
+```MySQL [(none)]> SHOW DATABASES;
+MySQL [(none)]> USE blog;
+MySQL [blog]> SHOW TABLES;
+MySQL [blog]> SELECT * FROM author;
+```
+
+To initiate an ```Author``` object, pass the parameters:
 
 
 
- 
+Back to python shell:
+```
+>>> from flask_blog import app, db
+>>> from flask_blog.author.models import *
+>>> with app.app_context():
+...  db.create_all()
+...  author = Author(
+...  'Ishan Senarath', 'ishan@webcubesolutions.lk', 'ishan', '12345', True
+...  )
+
+```
+Try to call ```author```:
+```
+>>> author
+<Author 'ishan'>
+```
+
+Username is passed into  ```__repr__()``` in ```author/models.py```.
+
+Create a session to add the record to database:
+
+```with app.app_context():
+    db.session.add(author)
+    db.session.commit()
+```
+    
+Check database again:
+
+``` SELECT * FROM author;```
+
+
+Fetch author id:
+```with app.app_context():
+    db.session.add(author)
+    db.session.commit()
+    author.id
+```
+
+Fetch  fullname:
+
+```
+>>> from flask_blog import app, db
+>>> from flask_blog.author.models import *
+>>> with app.app_context():
+...  db.create_all()
+...  author = Author(
+...  'Ishan Senarath', 'ishan@webcubesolutions.lk', 'ishan', '12345', True
+...  )
+...  db.session.add(author)
+...  db.session.commit()
+...  author.fullname
+... 
+'Ishan Senarath'
+```
+
+Create another author:
+
+```
+>>> with app.app_context():
+...  author = Author(
+...  'John Smith', 'john@example.com', 'john', '12345', True
+...  )
+...  author
+... 
+<Author 'john'>
+```
+
+Add new author:
+```
+with app.app_context():
+...  db.session.add(author)
+...  db.session.commit()
+
+```
+
+Check database using:
+``` SELECT * FROM author;
+```
+    
+See all authors:
+
+```
+>>> with app.app_context():
+...  authors = Author.query.all()
+...  authors
+... 
+[<Author 'ishan'>, <Author 'john'>]
+
+```
+
+Fetch the first item of author list:
+```
+>>> with app.app_context():
+...  authors = Author.query.all()
+...  authors[0]
+... 
+<Author 'ishan'>
+```
+Fetch the 2nd item of author list:
+```
+>>> with app.app_context():
+...  authors = Author.query.all()
+...  authors[1]
+... 
+<Author 'john'>
+```
+
+Get fullname of second author:
+```
+>>> with app.app_context():
+...  authors = Author.query.all()
+...  authors[1].fullname
+... 
+'John Smith'
+```
+
+Use ```query.filter_by()``` and get only the first record using ```.first()``` :
+```
+>>> with app.app_context():
+...  authors = Author.query.filter_by(username='ishan').first()
+...  authors
+... 
+<Author 'ishan'>
+```
+
+Erase all tables:
+
+Open a new terminal window:
+
+```
+>>> from flask_blog import app, db
+>>> from flask_blog.author.models import *
+>>> with app.app_context():
+...  db.session.commit()
+...  db.drop_all()
+
+```
+Check database:
+```MySQL [blog]> SHOW TABLES;```

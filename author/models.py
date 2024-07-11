@@ -25,7 +25,7 @@ class Author(db.Model):
     def __repr__(self):
         return '<Author %r>' % self.username
     # reproduce (repr) method allow you to display label records
-    
+    ArithmeticError
 
 
 

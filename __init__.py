@@ -1,7 +1,7 @@
 import sys
 import os
 from flask import Flask
-from sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 
 # Ensure the settings module is in the Python path
