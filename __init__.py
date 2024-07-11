@@ -22,7 +22,7 @@ app.config.from_object('flask_blog.settings')
 
 
 db = SQLAlchemy(app)
-
+# db holds the database
 
 # Import views to register routes
 from flask_blog.blog import views  
