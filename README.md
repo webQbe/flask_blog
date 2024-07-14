@@ -191,7 +191,7 @@ Get fullname of second author:
 ...  authors[1].fullname
 ... 
 'John Smith'
-```
+``` 
 
 Use ```query.filter_by()``` and get only the first record using ```.first()``` :
 ```
@@ -216,3 +216,11 @@ Open a new terminal window:
 ```
 Check database:
 ```MySQL [blog]> SHOW TABLES;```
+
+
+# Building the Base with Bootstrap
+
+Create new folder ```templates```
+(All the templates for the app is stored here.)
+
+Create ```templates\base.html``` 
