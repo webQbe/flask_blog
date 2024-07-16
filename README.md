@@ -231,12 +231,25 @@ Install Flask-wtforms:
 Add ```flask-wtf``` to ```requirements.txt``` file.
 On terminal, ```pip install -r requirements.txt```
 
-Create ```author/forms.py```. 
+Create ```author/forms.py``` file. 
 Create ```RegisterForm``` class in ```forms.py```
 Define a new app route in ```author/views.py```
 
 Create folder ```templates/author```
 Create file ```templates/author/register.html``` where 
   ```base.html``` will be extended.
- 
+  
+  
+# Adding Errors Messages into Forms
+  
+```flask_blog``` folder copied to ```venv/lib/python3.9/site-packages/flask_blog/```
+
+Run ```manage.py``` using ```python manage.py```.
+Preview app route ```/register```.
+
+Add flask code to ```author/register.html``` file.
+Add ```/success``` route to ```author/views.py```
+
+Try entering invalid data to see error messages.
+
 

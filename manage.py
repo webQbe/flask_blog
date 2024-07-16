@@ -1,21 +1,23 @@
 import sys
 import os
 from dotenv import load_dotenv
+#from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_blog import app
+from flask_blog import app, db
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+# Load environment variables
 load_dotenv()
 
-app = Flask(__name__)
-app.config.from_object('flask_blog.settings')
+# Add the project directory to the system path
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+print("System path:", sys.path)
 
-db = SQLAlchemy(app)
+# Import the Flask app
+from flask_blog import app, db
 
-from flask_blog.blog import views  
-from flask_blog.author import views
+# Initialize the database
+#db = SQLAlchemy(app)
+
 
 if __name__ == "__main__":
     app.run(
@@ -23,3 +25,14 @@ if __name__ == "__main__":
         host=os.getenv('IP', '0.0.0.0'),
         port=int(os.getenv('PORT', 8080))  
     )
+
+
+
+
+app = Flask(__name__)
+app.config.from_object('flask_blog.settings')
+
+
+from flask_blog.blog import views  
+from flask_blog.author import views
+
