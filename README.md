@@ -1,6 +1,6 @@
 # flask_blog
 
-##Creating SQLAlchemy Database
+# Creating SQLAlchemy Database
 
 Rename / move 'home' directory to 'blog'
 
@@ -38,13 +38,13 @@ Add placehoder things to ```views.py```
 Add ```init.py``` files to ```author``` and ```blog```
 
 
-##Defining a Class for Models
+# Defining a Class for Models
 
 Define a class in ```models.py``` that defines the author object
 
 
 
-##Discussing the ORM Interactions
+# Discussing the ORM Interactions
 
 Create ```Author``` class in ```author/models.py``` file.
 
@@ -223,4 +223,20 @@ Check database:
 Create new folder ```templates```
 (All the templates for the app is stored here.)
 
-Create ```templates\base.html``` 
+Create ```templates/base.html``` 
+
+# Managing ‘Flask-wtforms’ Validators
+
+Install Flask-wtforms:
+Add ```flask-wtf``` to ```requirements.txt``` file.
+On terminal, ```pip install -r requirements.txt```
+
+Create ```author/forms.py```. 
+Create ```RegisterForm``` class in ```forms.py```
+Define a new app route in ```author/views.py```
+
+Create folder ```templates/author```
+Create file ```templates/author/register.html``` where 
+  ```base.html``` will be extended.
+ 
+
