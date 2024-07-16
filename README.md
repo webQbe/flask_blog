@@ -253,3 +253,15 @@ Add ```/success``` route to ```author/views.py```
 Try entering invalid data to see error messages.
 
 
+# Explaining Macros for Web Development
+
+Macros allow us to make pieces of templates.
+
+Replacing code in ```author/register.html``` file with macros:
+Create ```templates/_formhelpers.html``` file to define macros.
+
+Run ```python manage.py``` and enter different passwords on the form to see if 
+"Passwords must match" message displays.
+
+Enter data correctly and click 'Register' button to see if you're redirected to
+"Author registered!" page.
