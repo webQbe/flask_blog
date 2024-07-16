@@ -257,7 +257,7 @@ Try entering invalid data to see error messages.
 
 Macros allow us to make pieces of templates.
 
-Replacing code in ```author/register.html``` file with macros:
+Replacing code in ```author/register.html``` file with macros:  
 Create ```templates/_formhelpers.html``` file to define macros.
 
 Run ```python manage.py``` and enter different passwords on the form to see if 
@@ -265,3 +265,9 @@ Run ```python manage.py``` and enter different passwords on the form to see if
 
 Enter data correctly and click 'Register' button to see if you're redirected to
 "Author registered!" page.
+
+# Creating the Blog ‘SetupForm’ Class
+
+Create ```blog/models.py``` file to create ```Blog``` class.
+Create ```blog/form.py``` file to create ```SetupForm``` class.
+Import similar fields from ```RegisterForm``` class in ```author/form.py``` file.
