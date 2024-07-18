@@ -271,3 +271,31 @@ Enter data correctly and click 'Register' button to see if you're redirected to
 Create ```blog/models.py``` file to create ```Blog``` class.
 Create ```blog/form.py``` file to create ```SetupForm``` class.
 Import similar fields from ```RegisterForm``` class in ```author/form.py``` file.
+
+
+
+# Describing the Blog Admin and Creation Form
+
+Working on blog's presentation layer.
+
+Create ```templates/blog``` folder.  
+Create ```admin.html``` and ```setup.html``` files inside ```templates/blog```. 
+
+Work on ```blog/views.py```.
+
+Run python shell:
+```
+from flask_blog import app, db
+with app.app_context():
+    db.create_all()
+    db.session.commit()
+```
+
+
+Check whether there are ```tables``` on ```blog``` database:
+```MySQL [(none)]> USE blog;  
+MySQL [blog]> SHOW TABLES;
+```
+
+Run server with ```python manage.py``` command.
+Go to route ```'/admin'```, to see if 'Blog Creation' form is loading.

@@ -1,7 +1,12 @@
 import sys
 import os
+import logging
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+
+# Enable SQLAlchemy logging
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 
 # Ensure the settings module is in the Python path
@@ -14,8 +19,10 @@ app.config.from_object('flask_blog.settings')
 
 db = SQLAlchemy(app)
 
-from flask_blog.author import views  # Import your views here
+from author.models import Author
+from blog.models import Blog
 
+from flask_blog.author import views  # Import your views here
 # Add some debug prints to ensure routes are being registered. 
 print("Registered routes:")
 for rule in app.url_map.iter_rules():
