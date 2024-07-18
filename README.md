@@ -299,3 +299,26 @@ MySQL [blog]> SHOW TABLES;
 
 Run server with ```python manage.py``` command.
 Go to route ```'/admin'```, to see if 'Blog Creation' form is loading.
+
+
+# Associating the Database Author Forms
+
+Before we submit the 'Blog Creation' form, we need to be able to do database operations in 
+```blogs/views.py``` file.
+
+Run  ```python manage.py``` and preview ```'/admin'```,
+enter form data, leave "Full Name" blank to check error message.
+re-enter data and click "Create Blog" button.
+
+Go to mysql database and check whether data have been entered.
+
+```
+MySQL [(none)]> SHOW DATABASES;
+MySQL [(none)]> USE blog;
+MySQL [blog]> SHOW TABLES;
+MySQL [blog]> SELECT * FROM author;
+MySQL [blog]> SELECT * FROM blog; 
+```
+
+'admin id' in table 'blog' is the foreign key which acts as a pointer.
+
