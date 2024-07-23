@@ -351,3 +351,30 @@ Check login form error messages by :
 Check if "Author logged in!" message displays by fillng correct data.
 
  
+# Using the Decorator Function
+
+Make sure people are logged in before they access a route.
+Create your own "Login required!" decorator.
+
+Add ```@login_required``` decorator to ```blog/views.admin()```,
+to check if the person is logged in already.
+
+Move following blog checking code from ```admin()``` to ```index()```:
+    ```
+    blogs = Blog.query.count()
+    if blogs == 0:
+        return redirect(url_for('setup'))
+    ```
+So, if you hit the homepage, it will get you to the blog setup instead of admin.
+
+Create ```author/decorators.py``` to define ```login_required()```.
+Modify ```blog/views.py ``` and ```author/views.py```.
+
+Run ```manage.py``` and go to login form.
+- Log in
+- Open Developer Tools.
+- Go to Application > Cookies > Session
+- Delete the session and reload page to log out.
+
+When you log out, you go into login page through a url with ```next```: 
+```/login?next=http://a45792d2eebc4598aad6d843a4a4432f.vfs.cloud9.ap-southeast-1.amazonaws.com/login_success```
