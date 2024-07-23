@@ -1,7 +1,6 @@
-from flask_blog import app
+from __init__ import app, db
 from flask import render_template, redirect, flash, url_for
 from blog.form import SetupForm
-from flask_blog import db
 from author.models import Author 
 from blog.models import Blog
 from author.decorators import login_required

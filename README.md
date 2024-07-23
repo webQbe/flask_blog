@@ -378,3 +378,10 @@ Run ```manage.py``` and go to login form.
 
 When you log out, you go into login page through a url with ```next```: 
 ```/login?next=http://a45792d2eebc4598aad6d843a4a4432f.vfs.cloud9.ap-southeast-1.amazonaws.com/login_success```
+
+
+Add a login error message in ```author/views.py```.
+Then try to login with wrong username and password to check if error message displays.
+
+# Presenting Flask Migrations
+

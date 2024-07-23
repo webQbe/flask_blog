@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 #from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
-from flask_blog import app, db
+from __init__ import app, db
 
 # Load environment variables
 load_dotenv()
@@ -13,7 +13,7 @@ sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 print("System path:", sys.path)
 
 # Import the Flask app
-from flask_blog import app, db
+from __init__ import app, db
 
 # Initialize the database
 #db = SQLAlchemy(app)
@@ -33,6 +33,6 @@ app = Flask(__name__)
 app.config.from_object('flask_blog.settings')
 
 
-from flask_blog.blog import views  
-from flask_blog.author import views
+from blog import views  
+from author import views
 

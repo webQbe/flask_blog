@@ -1,4 +1,4 @@
-from flask_blog import app
+from __init__ import app
 from flask import render_template, redirect, url_for, session, request
 from author.form import RegisterForm, LoginForm
 from author.models import Author
@@ -24,6 +24,8 @@ def login():
                 return redirect(next)
             else:
                 return redirect(url_for('login_success'))
+        else:
+            error = "Incorrect username and password"
     return render_template('author/login.html', form=form, error=error)
     #print("Login route accessed")
     #return "Hello, User!"
