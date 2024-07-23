@@ -322,3 +322,32 @@ MySQL [blog]> SELECT * FROM blog;
 
 'admin id' in table 'blog' is the foreign key which acts as a pointer.
 
+
+# Implementing a Login Function Form
+
+Check the databases and tables:
+
+```
+SHOW DATABASES;
+USE blog;
+SHOW TABLES;
+```
+See records:
+
+```SELECT * FROM author;```
+
+Create LoginForm class in ```author/form.py```.
+Create ```templates/author/login.html```.
+Let's start setting up a login function in ```author/views.py```.
+Run ```manage.py``` and preview ```/login```.
+
+Start doing database operations in ```author/views.py```.
+- First look up an author that has username and password that we have on the form.
+
+Check login form error messages by :
+- only filling password field.
+- filling wrong password
+
+Check if "Author logged in!" message displays by fillng correct data.
+
+ 
