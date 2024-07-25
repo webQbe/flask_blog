@@ -1,10 +1,12 @@
-from __init__ import app
+#from __init__ import app
 from flask import render_template, redirect, url_for, session, request
-from author.form import RegisterForm, LoginForm
-from author.models import Author
-from author.decorators import login_required
+from app.author.form import RegisterForm, LoginForm
+from app.models import Author
+from app import db
+from . import author
+from app.author.decorators import login_required
 
-@app.route('/login', methods=('GET', 'POST'))
+@author.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     error = None
@@ -31,27 +33,27 @@ def login():
     #return "Hello, User!"
     
 #define app route for registration
-@app.route('/register', methods=('GET', 'POST'))
+@author.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
     print("Register route accessed")
     # checking if form is submitted
     if form.validate_on_submit():
-        return redirect(url_for('success'))
+        return redirect(url_for('author.success'))
     return render_template('author/register.html', form=form)
     
-@app.route('/success')
+@author.route('/success')
 def success():
     return "Author registered!"
     
 
-@app.route('/login_success')
+@author.route('/login_success')
 @login_required # you need to log in before landing on login_success
 def login_success():
     return "Author logged in!"
     
     
-@app.route('/test')
+@author.route('/test')
 def test():
     print("Test route accessed")
     return "Test route is working!"

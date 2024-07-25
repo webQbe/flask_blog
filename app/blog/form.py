@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, validators
 
 # importing same fields from author/form.py 
-from author.form import RegisterForm
+from app.author.form import RegisterForm
 
 class SetupForm(RegisterForm):
     name = StringField('Blog name', [

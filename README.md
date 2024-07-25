@@ -383,5 +383,84 @@ When you log out, you go into login page through a url with ```next```:
 Add a login error message in ```author/views.py```.
 Then try to login with wrong username and password to check if error message displays.
 
+
 # Presenting Flask Migrations
+
+Migrations is the way that we handle changes to database.
+
+
+Add ```flask-migrate``` to ```requirements.txt```. 
+Run ```pip install -r requirements.txt```.
+
+Add ```flask_migrate``` to ```init.py```file and add migrations section.
+
+## Encrypting passwords
+
+
+Erase all tables:
+
+Delete all mysql tables using flask shell:
+```
+flask shell  
+>>> from app import db
+>>> db.drop_all()
+>>> db.session.commit()
+```
+
+Go to mysql and check if tables are deleted:
+
+```
+MySQL [(none)]> USE blog;
+MySQL [blog]> SHOW TABLES;
+SHOW TABLES;
+```
+Exit python shell and Run migration commands:
+
+1. ```flask db init```
+
+ - Check whether ```migrations``` folder has been created.
+ - Check ```migrations/alembic.ini``` file.
+
+
+2.```flask db migrate -m "Initial migration"```
+  - It will create a file with a hash inside ```versions/``` folder.
+  - Open the file, there are 02 sections upgrade and downgrade.
+  - Upgrade is path forward and downgrade is path behind.
+  
+
+Go to mysql and check whether ```alembic_version``` table has been created.
+Alembic version is current version which is used to track previous and next versions . 
+
+Create tables using upgrade command:
+
+```flask db upgrade
+```
+
+### Remember: 
+It's always migrate and upgrade, in migrate you do the changes in your models 
+and generate the version in a file. Once you've checked the file, you do the upgrade 
+to change the database. 
+
+```flask db upgrade```
+
+Then check alembic_version:
+```
+MySQL [blog]> SELECT * FROM alembic_version;
+```
+Check whether ```9c3919b1f19a_initial_migration.py``` filename and version number is the same.
+
+Check whether tables ```author``` and ```blog``` have been created:
+
+```
+MySQL [blog]> SHOW TABLES;
+```
+
+
+
+
+
+
+
+
+
 
